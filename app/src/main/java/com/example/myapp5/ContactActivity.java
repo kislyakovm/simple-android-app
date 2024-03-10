@@ -20,13 +20,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class ContactActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
-//    private String[] namesArr = new String[]{"Max", "Nick", "John", "Tom", "Alex"};
     public static List<String> contactNames = new ArrayList<>();
-
-
+    public static List<String> contactBio = new ArrayList<>();
     private ListView listView;
     private GestureDetector gd;
 
@@ -35,12 +34,10 @@ public class ContactActivity extends AppCompatActivity implements GestureDetecto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-//        contactNames.addAll(Arrays.asList("Max", "Nick", "John", "Tom", "Alex"));
+        CustomAdapter customAdapter = new CustomAdapter(this, contactNames, contactBio);
 
         listView = findViewById(R.id.list_view);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                R.layout.item_samsung, R.id.user_name ,contactNames);
-        listView.setAdapter(adapter);
+        listView.setAdapter(customAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

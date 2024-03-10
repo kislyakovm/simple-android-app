@@ -30,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     public void saveData(View view) {
         String userName = user_name_field.getText().toString();
         ContactActivity.contactNames.add(userName);
+
         String userBio = user_bio_field.getText().toString();
+        ContactActivity.contactBio.add(userBio);
 
         try {
             FileOutputStream fileOutputStream = openFileOutput("user_data.txt", MODE_PRIVATE);
